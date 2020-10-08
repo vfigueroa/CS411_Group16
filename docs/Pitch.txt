@@ -12,15 +12,9 @@ Link to repository: https://github.com/victorfigueroabuilds/CS411_Group16
 Idea #1 - Public bathroom rating app
 Dataset - (Google Maps) , https://www.refugerestrooms.org/api/docs/ (API to locate public restrooms on a map), API, Yelp review API? Face to emotion API https://www.programmableweb.com/api/rekognition
 Explanation - Tweets -> mood -> recommendation of bathrooms
+  The user would log into Google (Third-party authentication) so the app could have permission to take a picture of you to see what kind of mood you’re in with a camera API, to recommend the types of public bathrooms, the locations will be found through the above linked API. It could be a very clean one at a gas station, a free one in a restaurant if you’re feeling hungry, etc. And based on these experiences, the user will be able to review the bathroom on its cleanliness and other factors for these restrooms to get reviews and maybe stars, so other people can see where they can find a bathroom most suitable for them (Will be done by accessing a Yelp review API?) 
 
-The user would log into Google (Third-party authentication) so the app could have permission to take a picture of you to see what kind of mood you’re in with a camera API, to recommend the types of public bathrooms, the locations will be found through the above linked API. It could be a very clean one at a gas station, a free one in a restaurant if you’re feeling hungry, etc. And based on these experiences, the user will be able to review the bathroom on its cleanliness and other factors for these restrooms to get reviews and maybe stars, so other people can see where they can find a bathroom most suitable for them (Will be done by accessing a Yelp review API?) 
-
-
-Idea #2 - Compatibility match with criminals on the FBI stats // What crime are you most likely to commit?
-Dataset - Offender fingerprint database? 
-Explanation:
-We would use a camera API 
-
-Idea #3 - virtual lover based on a celebrity 
+Idea #2 - virtual lover based on a celebrity 
 Dataset - Love Droids API, Twitter, Parallel Dots API
-Explanation - We would use tweets from the target celebrity to “train” a chatbot that can be used as a virtual lover. We will allow users to create their own virtual lover or choose from a list of already made chatbots. Everytime a new chatbot is created, it will be added to the database. We will have the user login via Twitter. Front end will mainly be a chat and gui to choose a preset chatbot or a twitter profile to create a chatbot off of.
+Explanation - 
+  We would use tweets from the target celebrity to “train” a chatbot that can be used as a virtual lover. We will allow users to create their own virtual lover or choose from a list of already made chatbots. Everytime a new chatbot is created, it will be added to the database. We will have the user login via Twitter. Front end will mainly be a chat and gui to choose a preset chatbot or a twitter profile to create a chatbot off of.
