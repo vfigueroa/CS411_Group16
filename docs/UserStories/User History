@@ -1,3 +1,3 @@
-3. User History - As a user, I want to see my previous bathroom history so that I can determine which bathrooms I have been to and recall my experiences.
-Acceptance Criteria: 
-Description: 
+2. User History - As a user, I want to see my previous bathroom history so that I can determine which bathrooms I have been to and recall my experiences.
+Acceptance Criteria: Given that I want to see a history of the bathrooms I have used, I will be able to press a button that gives me a list of bathrooms I have used in the past.
+Description: Ideally, if the user wants to see past history of the restrooms they’ve used, they must log into their account (refer to Case 1: New User if user must create an account) and on the main dashboard, the user can click the “History” button to view their past used restrooms for whatever reason they need. If the history page were to lose some or all data of their past used bathrooms, the user should be able to search up bathrooms in the area to see if they can find it manually. (Refer to Case 3: User Search if the user would like to know how to track bathrooms near them).

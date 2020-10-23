@@ -1,3 +1,4 @@
-6. Bathroom Sort - As an end system, I should be able to sort bathrooms by specific criteria including rating, number of visits, cleanliness, mood association, etc.
-Acceptance Criteria: 
-Description: 
+5. Bathroom Sort - As an end system, I should be able to sort bathrooms by specific criteria including rating, number of visits, cleanliness, mood association, etc.
+Acceptance Criteria: Users should be able apply filters to the bathroom map and only bathrooms with those associated values are visible.
+Description: Every time a user visits a bathroom they will be asked to rank it by a given criteria. All of these rankings will be used to give the bathroom an overall score for each category. Users should be able to filter bathrooms through these rankings and their search results will be populated on the bathroom map.
+
