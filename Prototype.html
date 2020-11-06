@@ -1,0 +1,41 @@
+<html>
+    <h2>Bathroom Finder</h2>
+
+<form action="/action_page.php" style="font-family:Verdana;">
+
+  <label for="country_name">Country:</label><br>
+  <input type="text" id="country_name" name="country_name" style="font-family:Verdana;" placeholder="United States"><br><br>
+
+  <label for="state_name">State:</label><br>
+  <input type="text" id="state_name" name="state_name" style="font-family:Verdana;" placeholder="Massachusetts"><br><br>
+
+    <label for="city_name">City:</label><br>
+  <input type="text" id="city_name" name="city_name" style="font-family:Verdana;" placeholder="Boston"><br><br>
+
+    <label for="bathroom_name">Bathroom:</label><br>
+  <input type="text" id="bathroom_name" name="bathroom_name" style="font-family:Verdana;" placeholder="United States"><br><br>
+
+  <input type="submit" style="font-family:Verdana;" value="Submit">
+</form>
+
+<p> Click "Submit" to find bathrooms that match your search. </p>
+
+	<script>
+
+	 // AJAX Request to JSON
+              $.ajax({
+                  url: "https://refugerestrooms.org/api/docs",
+                  // Handle as Text
+                  dataType: "text",
+                  success: function(data) {
+                      // Parse JSON file
+                      var json = $.parseJSON(data);
+                      //Store data into a variable
+                      // Display Players
+                      $('#bathroom').html('________: ');
+                  }
+      });;
+
+	</script>
+
+</html>
