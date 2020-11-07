@@ -4,7 +4,7 @@
   </head>
     <<h2>Bathroom Finder</h2>
 
-<form action="/action_page.php" style="font-family:Verdana;">
+<form style="font-family:Verdana;">
 
   <label for="country_name">Country:</label><br>
   <input type="text" id="country_name" name="country_name" style="font-family:Verdana;" placeholder="Ex: Canada"><br><br>
@@ -18,10 +18,25 @@
     <label for="bathroom_name">Bathroom:</label><br>
   <input type="text" id="bathroom_name" name="bathroom_name" style="font-family:Verdana;" placeholder="Type here..."><br><br>
 
-  
+  <p> Or use your current location</p>
+  <input type ="submit" id="getCurrLoc" value="Use Current Location" >
+  <p id='submit'><button id='updateSubmit'>Search Bathrooms</button></p>
 </form> 
 
 <p> Click "Submit" to find bathrooms that match your search. </p>
+<script>
+  function getCurrentLocation() {
+    if(navigator.geolocation) {
+      let myPos = navigator.geolocation.getCurrentPosition;
+      console.log(myPos);
+    } else {
+      document.getElementById('getCurrLoc').innerHTML = "Geolocation is not supported by this browser.";
+    }
+  };
 
+  document.getElementById('getCurrLoc').onclick = function () {
+    getCurrentLocation();
+  };
+</script>
 	
 </html>
