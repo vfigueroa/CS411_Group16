@@ -1,0 +1,23 @@
+{
+  "name": "teamproject",
+  "version": "1.0.0",
+  "description": "Bathroom finder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "bathroom",
+    "find",
+    "location"
+  ],
+  "author": "Matthew G, et al",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.6",
+    "request": "^2.88.2"
+  }
+}
