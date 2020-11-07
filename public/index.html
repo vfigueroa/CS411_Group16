@@ -2,7 +2,7 @@
   <head>
     <title>Bathroom Finder</title>
   </head>
-    <<h2>Bathroom Finder</h2>
+    <h2>Bathroom Finder</h2>
 
 
   <label for="country_name">Country:</label><br>
@@ -22,7 +22,7 @@
   <p id='submit'><button id='updateSubmit'>Search Bathrooms</button></p>
 
 
-<p> Click "Submit" to find bathrooms that match your search. </p>
+
 <script type>
   function getCurrentLocation(callback) {
     if (navigator.geolocation) {
@@ -38,6 +38,17 @@
       var currentLat = position.coords.latitude;
       var currentLon = position.coords.longitude;
       console.log(currentLat, currentLon);
+      const data = {currentLat, currentLon};
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      };
+      fetch('/getBathrooms', options).then(response => {
+        console.log(response.json());
+      })
     });
   };
 </script>
