@@ -6,7 +6,7 @@
 
 
   <label for="country_name">Country:</label><br>
-  <input type="text" id="country_name" name="country_name" style="font-family:Verdana;" placeholder="Ex: Canada"><br><br>
+  <input type="text" id="country_name" name="country_name" style="font-family:Verdana;" placeholder="Ex: United States of America"><br><br>
 
   <label for="state_name">State:</label><br>
   <input type="text" id="state_name" name="state_name" style="font-family:Verdana;" placeholder="Ex: Massachusetts"><br><br>
@@ -37,18 +37,27 @@
     getCurrentLocation(position => {
       var currentLat = position.coords.latitude;
       var currentLon = position.coords.longitude;
-      console.log(currentLat, currentLon);
-      /*
-      const data = {currentLat, currentLon};
-      const options = {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      };
-      */
-      var url = 'https://www.refugerestrooms.org/api/v1/restrooms/by_location?page=1&per_page=10&offset=0&';
+      console.log(`Current latitude: ${currentLat}, Current longitude: ${currentLon}`);
+
+
+      fetch(`/nearbyBathrooms${currentLat}/${currentLon}`)
+      .then(response => response.json())
+      .then(myText => {
+        for (i = 0; i < myText.length ; i++) {
+          const root = document.createElement('div');
+          const name = document.createElement('div');
+          const address = document.createElement('div');
+          name.textContent = `Name: ${myText[i].name}`;
+          address.textContent = `Address: ${myText[i].street}, ${myText[i].city}, ${myText[i].state}, ${myText[i].country}`;
+
+          root.append(name, address);
+          document.body.append(root);
+        }
+      })
+      
+
+
+      /*var url = 'https://www.refugerestrooms.org/api/v1/restrooms/by_location?page=1&per_page=10&offset=0&';
       var myReq = url + '&lat=' +  `${currentLat}` + '&' + '&lng=' +  `${currentLon}`;
       var myData = []
       fetch(myReq)
@@ -65,7 +74,7 @@
           document.body.append(root);
         }
       })
-    
+    */
     });
   };
 </script>
