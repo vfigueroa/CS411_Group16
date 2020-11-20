@@ -1,10 +1,12 @@
 <html>	
+  <link rel="stylesheet" href="styles.css">
   <head>
     <title>Bathroom Finder</title>
   </head>
     <h2>Bathroom Finder</h2>
 
-
+  <p id = "myRedirect""> Click here for login</p>
+  <body style="background-color: rgb(47, 47, 47);">
   <label for="country_name">Country:</label><br>
   <input type="text" id="country_name" name="country_name" style="font-family:Verdana;" placeholder="Ex: United States of America"><br><br>
 
@@ -21,9 +23,12 @@
   <input type ="submit" id="getCurrLoc" value="Use Current Location" >
   <p id='submit'><button id='updateSubmit'>Search Bathrooms</button></p>
 
+  </body>
 
-
-<script type>
+<script>
+  document.getElementById("myRedirect").onclick = function () {
+     location.href = "/register.html";
+  }
   function getCurrentLocation(callback) {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(callback);
