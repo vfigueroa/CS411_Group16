@@ -1,0 +1,117 @@
+<html>	
+  <link rel="stylesheet" href="styles.css">
+  
+  <header>
+    <div class="container">
+      <h1 class="logo"></h1>
+
+      <nav>
+        <ul>
+          <li><a href="landingPage.html">Home</a></li>
+          <li><a href="register.html">Sign in</a></li>
+          <li><a href="searchBathrooms.html">Search Bathrooms</a></li>
+          <li><a href="#">Search Restaurants</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <head>
+    <div id = "myTitle" >
+      <p> Search Bathrooms</p>
+    </div>
+  </head>
+
+  
+  <input type ="submit" id = "myButton" onclick = "asd(1)" value="Use your current location" >
+  <input type ="submit" id = "myButton" onclick = "asd(2)" value="Search for something specific" >
+
+  <form id="currLocationForm" action="">
+    <input type="button" id ="getCurrLoc" value="Find nearby bathrooms">
+  </form>
+  <form id="searchQueryForm" action="">
+    <input type="text" id="myQuery" >
+    <input type ="button" id ="searchQuery" value = "Search">
+  </form>
+  </body>
+
+<script>
+  window.onload = function() {
+
+    document.getElementById("currLocationForm").style.display = "none";
+    document.getElementById("searchQueryForm").style.display = "none";
+  };
+
+  function asd(a) {
+    let x = document.getElementById("currLocationForm").style;
+    let y = document.getElementById("searchQueryForm").style;
+  if (a == 1 ) {
+    x.display = "block";
+    y.display = "none";
+  } else if (a == 2) {
+    y.display = "block";
+    x.display = "none";
+  }
+  else {
+    document.getElementById("asd").style.display = "none";
+  }
+  }
+  function getCurrentLocation(callback) {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(callback);
+    } else {
+      document.getElementById("getCurrLoc").innerHTML = "Geolocation not supported";
+      document.getElementById("getCurrLoc").disabled = true;
+    }
+  };
+
+  document.getElementById('getCurrLoc').onclick = function () {
+    getCurrentLocation(position => {
+      var currentLat = position.coords.latitude;
+      var currentLon = position.coords.longitude;
+      console.log(`Current latitude: ${currentLat}, Current longitude: ${currentLon}`);
+
+      fetch(`/nearbyBathrooms${currentLat}/${currentLon}`)
+      .then(response => response.json())
+      .then(myText => {
+        for (i = 0; i < myText.length ; i++) {
+          const root = document.getElementById("currLocationForm");
+          const address = document.createElement('div');
+          const name = document.createElement('div');
+          
+          name.textContent = `Name: ${myText[i].name}`;
+          address.textContent = `Address: ${myText[i].street}, ${myText[i].city}, ${myText[i].state}, ${myText[i].country}`;
+
+          root.append(address,name);
+          document.body.append(root);
+        }
+      })
+    });
+  };
+  document.getElementById('searchQuery').onclick = function () {
+    let myQuery = document.getElementById('myQuery').value;
+    console.log(myQuery);
+    
+  }    
+
+      /*var url = 'https://www.refugerestrooms.org/api/v1/restrooms/by_location?page=1&per_page=10&offset=0&';
+      var myReq = url + '&lat=' +  `${currentLat}` + '&' + '&lng=' +  `${currentLon}`;
+      var myData = []
+      fetch(myReq)
+      .then(response => response.json())
+      .then(json => { 
+        for (data of json) {
+          const root = document.createElement('div');
+          const name = document.createElement('div');
+          const address = document.createElement('div');
+          name.textContent = `Name: ${data.name}`;
+          address.textContent = `Address: ${data.street}, ${data.city}, ${data.state}, ${data.country}`;
+
+          root.append(name, address);
+          document.body.append(root);
+        }
+      })
+    */
+    
+</script>
+	
+</html>
