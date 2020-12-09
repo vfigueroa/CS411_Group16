@@ -24,6 +24,17 @@ app.get('/nearbyBathrooms:currentLat/:currentLon', async (request, response) => 
     response.send(test);
 })
 
+app.get('/specificQueryBathrooms/:myQuery', async (request, response) => {
+    var url = 'https://www.refugerestrooms.org/api/v1/restrooms/search?page=1&per_page=10&offset=0&ada=false&unisex=false&query=';
+    var data = request.params;
+    var myReq = url +   `${data.myQuery}`;
+
+    const myrequest = await fetch(myReq);
+    const test = await myrequest.json();
+    response.send(test);
+})
+
+
 
 
 
