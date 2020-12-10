@@ -23,7 +23,7 @@
 <body>
 <div id="main"><!-- open main div -->
 <div id="header"><!-- open header div -->
-<h1 style="text-align:center; font-family:Georgia;">Restaurant Quiz</h1>
+<h1 style="text-align:center; font-family:'Work-sans', sans-serif; color: white;">RESTAURANT QUIZ</h1>
 
 
 
@@ -34,72 +34,66 @@
 <form id="form1">
 
 <h2>What is your go-to for takeout?</h2>
-<label for="take_italian"><input type="checkbox" name="takeout"  id="take_italian" />Italian (pasta?)</label>
-<label for="take_chinese"><input type="checkbox" name="takeout"  id="take_chinese" />Chinese (noodle-esque?)</label>
-<label for="take_mexican"><input type="checkbox" name="takeout"  id="take_mexican" />Mexican (Chipotle-esque?)</label>
-<label for="take_american"><input type="checkbox" name="takeout"  id="take_american"/>American (burger?)</label>
+<label for="take_italian"><input type="radio" name="takeout"  id="take_italian" />Italian (pasta?)</label>
+<label for="take_chinese"><input type="radio" name="takeout"  id="take_chinese" />Chinese (noodle-esque?)</label>
+<label for="take_mexican"><input type="radio" name="takeout"  id="take_mexican" />Mexican (Chipotle-esque?)</label>
+<label for="take_american"><input type="radio" name="takeout"  id="take_american"/>American (burger?)</label>
 
 <h2>Pick a beverage!</h2>
-<label for="red_wine"><input type="checkbox" name="bev" id="red_wine"/>Red wine</label>
-<label for="beer"><input type="checkbox" name="bev" id="beer"/>Beer</label>
-<label for="vodka"><input type="checkbox" name="bev" id="vodka" />Vodka</label>
-<label for="tequila"><input type="checkbox" name="bev" id="tequila" />Tequila</label>
-<label for="none"><input type="checkbox" name="bev" id="none" />I don't drink</label>
+<label for="red_wine"><input type="radio" name="bev" id="red_wine"/>Red wine</label>
+<label for="beer"><input type="radio" name="bev" id="beer"/>Beer</label>
+<label for="vodka"><input type="radio" name="bev" id="vodka" />Vodka</label>
+<label for="tequila"><input type="radio" name="bev" id="tequila" />Tequila</label>
+<label for="none"><input type="radio" name="bev" id="none" />I don't drink</label>
 
-<h2>Do you have any dietary restrictions? (Choose all that apply)</h2>
-<label for="veg"><input type="checkbox" name="diet" id="veg" />Vegan/Vegetarian</label>
-<label for="dairy"><input type="checkbox" name="diet" id="dairy" />Dairy free</label>
-<label for="kosher"><input type="checkbox" name="diet" id="kosher" />Kosher/Halal</label>
-<label for="gluten"><input type="checkbox" name="diet" id="gluten" />Gluten free</label>
-<label for="NA"><input type="checkbox" name="diet" id="NA" />N/A</label>
 
 <h2>How far are you willing to travel for a good meal?</h2>
-<label for="two"><input type="checkbox" name="travel" id="two" />Up to 2 miles</label>
-<label for="five"><input type="checkbox" name="travel" id="five" />Up to 5 miles</label>
-<label for="ten"><input type="checkbox" name="travel" id="ten" />Up to 10 miles</label>
-<label for="twenty"><input type="checkbox" name="travel"  id="twenty" />Up to 20 miles</label>
-<label for="fly"><input type="checkbox" name="travel"  id="fly" />I'll fly!</label>
+<label for="two"><input type="radio" name="travel" id="two" />Up to 2 miles</label>
+<label for="five"><input type="radio" name="travel" id="five" />Up to 5 miles</label>
+<label for="ten"><input type="radio" name="travel" id="ten" />Up to 10 miles</label>
+<label for="twenty"><input type="radio" name="travel"  id="twenty" />Up to 20 miles</label>
+<label for="fly"><input type="radio" name="travel"  id="fly" />I'll fly!</label>
 
 <h2>How much are you willing to pay for a good meal?</h2>
-<label for="pay_ten"><input type="checkbox" name="pay" id="pay_ten" /><$10/person</label>
-<label for="pay_twentyfive"><input type="checkbox" name="pay" id="pay_twentyfive" /><$25/person</label>
-<label for="pay_fifty"><input type="checkbox" name="pay" id="pay_fifty" /><$50 /person</label>
-<label for="pay_hunna"><input type="checkbox" name="pay"  id="pay_hunna" /><$100/person</label>
-<label for="pay_inf"><input type="checkbox" name="pay"  id="pay_inf" />No budget!</label>
+<label for="pay_ten"><input type="radio" name="pay" id="pay_ten" /><$10/person</label>
+<label for="pay_twentyfive"><input type="radio" name="pay" id="pay_twentyfive" /><$25/person</label>
+<label for="pay_fifty"><input type="radio" name="pay" id="pay_fifty" /><$50 /person</label>
+<label for="pay_hunna"><input type="radio" name="pay"  id="pay_hunna" /><$100/person</label>
+<label for="pay_inf"><input type="radio" name="pay"  id="pay_inf" />No budget!</label>
 
 <h2>What guilty pleasure looks the most appealing?</h2>
-<label for="burger"><input type="checkbox" name="guilty" id="burger" />Burger</label>
-<label for="pizza"><input type="checkbox" name="guilty" id="pizza" />Pizza</label>
-<label for="steak"><input type="checkbox" name="guilty" id="steak" />Steak</label>
-<label for="cake"><input type="checkbox" name="guilty"  id="cake" />Cheesecake</label>
-<label for="icecream"><input type="checkbox" name="guilty"  id="icecream" />Ice cream</label>
+<label for="burger"><input type="radio" name="guilty" id="burger" />Burger</label>
+<label for="pizza"><input type="radio" name="guilty" id="pizza" />Pizza</label>
+<label for="steak"><input type="radio" name="guilty" id="steak" />Steak</label>
+<label for="cake"><input type="radio" name="guilty"  id="cake" />Cheesecake</label>
+<label for="icecream"><input type="radio" name="guilty"  id="icecream" />Ice cream</label>
 
 <h2>What place have you always wanted to visit?</h2>
-<label for="paris"><input type="checkbox" name="visit" id="paris" />Paris</label>
-<label for="dubai"><input type="checkbox" name="visit" id="dubai" />Dubai</label>
-<label for="rio"><input type="checkbox" name="visit" id="rio" />Rio</label>
-<label for="tokyo"><input type="checkbox" name="visit"  id="tokyo" />Tokyo</label>
-<label for="johan"><input type="checkbox" name="visit"  id="johan" />Johannesburg</label>
+<label for="paris"><input type="radio" name="visit" id="paris" />Paris</label>
+<label for="dubai"><input type="radio" name="visit" id="dubai" />Dubai</label>
+<label for="rio"><input type="radio" name="visit" id="rio" />Rio</label>
+<label for="tokyo"><input type="radio" name="visit"  id="tokyo" />Tokyo</label>
+<label for="johan"><input type="radio" name="visit"  id="johan" />Johannesburg</label>
 
 <h2>What was for breakfast?</h2>
-<label for="cereal"><input type="checkbox" name="breakfast" id="cereal" />cereal</label>
-<label for="drink"><input type="checkbox" name="breakfast" id="drink" />hot drink (tea/coffee)</label>
-<label for="getup"><input type="checkbox" name="breakfast" id="getup" />Some ornate getup</label>
-<label for="eggs"><input type="checkbox" name="breakfast"  id="eggs" />Eggs/bacon</label>
-<label for="what"><input type="checkbox" name="breakfast"  id="what" />What's breakfast?</label>
+<label for="cereal"><input type="radio" name="breakfast" id="cereal" />cereal</label>
+<label for="drink"><input type="radio" name="breakfast" id="drink" />hot drink (tea/coffee)</label>
+<label for="getup"><input type="radio" name="breakfast" id="getup" />Some ornate getup</label>
+<label for="eggs"><input type="radio" name="breakfast"  id="eggs" />Eggs/bacon</label>
+<label for="what"><input type="radio" name="breakfast"  id="what" />What's breakfast?</label>
 
 <h2>What is your current mood?</h2>
-<label for="happy"><input type="checkbox" name="mood" id="happy" />Happy</label>
-<label for="sad"><input type="checkbox" name="mood" id="sad" />Sad</label>
-<label for="angry"><input type="checkbox" name="mood" id="angry" />Angry</label>
-<label for="content"><input type="checkbox" name="mood"  id="content" />Content</label>
-<label for="stress"><input type="checkbox" name="mood"  id="stress" />Stressed</label>
+<label for="happy"><input type="radio" name="mood" id="happy" />Happy</label>
+<label for="sad"><input type="radio" name="mood" id="sad" />Sad</label>
+<label for="angry"><input type="radio" name="mood" id="angry" />Angry</label>
+<label for="content"><input type="radio" name="mood"  id="content" />Content</label>
+<label for="stress"><input type="radio" name="mood"  id="stress" />Stressed</label>
 
 <h2>Which do you prefer?</h2>
-<label for="salt"><input type="checkbox" name="taste" id="salt" />Salty</label>
-<label for="sweet"><input type="checkbox" name="taste" id="sweet" />Sweet</label>
-<label for="sour"><input type="checkbox" name="taste" id="sour" />Sour</label>
-<label for="spicy"><input type="checkbox" name="taste"  id="spicy" />Spicy</label>
+<label for="salt"><input type="radio" name="taste" id="salt" />Salty</label>
+<label for="sweet"><input type="radio" name="taste" id="sweet" />Sweet</label>
+<label for="sour"><input type="radio" name="taste" id="sour" />Sour</label>
+<label for="spicy"><input type="radio" name="taste"  id="spicy" />Spicy</label>
 
 
 <h2><button type="submit" value="Submit">Submit</button></h2>
@@ -108,8 +102,8 @@
 
 <style>
 body {
-background-color: blanchedalmond;
-font-family: Trebuchet MS;
+/*background: #f6f8f8;*/
+font-family: 'Work Sans', sans-serif;
 font-size: 90%;
 text-align: justify;
 }
@@ -120,7 +114,7 @@ max-width: 950px;
 
 margin: auto;
 padding: 10px;
-background-color: blanchedalmond;
+/*background-color: blanchedalmond;*/
 
 
 }
@@ -128,7 +122,7 @@ background-color: blanchedalmond;
 #header {
 margin-top: 0;
 width: 100%;
-background: white;
+/*background: white;*/
 
 text-align: center;
 
@@ -136,3 +130,4 @@ text-align: center;
 </style>
 
 </body>
+
