@@ -1,16 +1,32 @@
 <html>
-<title>Register</title>
-<link rel="stylesheet" href="/html/styles.css">
-<body style="background-color: rgb(47, 47, 47);">
-    <p>Hello</p>
-    <div >
+<title>Login</title>
+<link rel="stylesheet" href="registerStyles.css">
+<header>
+    <div class="container">
+      <h1 class="logo"></h1>
+
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="/public/register.html">Sign</a></li>
+          <li><a href="#">Search Bathrooms</a></li>
+          <li><a href="#">Search Restaurants</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<body>
+    <div class="login-page">
+    <div class="form"></div>
         <form>
-            <p style="font-family:Verdana; font-size: 18px;">Register</p>
+            <p style="font-family:Verdana; font-size: 18px;">Sign Up</p>
             <input type="text" style="font-family:Verdana; font-size: 18px;" placeholder="Username"><br><br>
             <input type="text" style="font-family:Verdana; font-size: 18px;" placeholder="Password"><br><br>
             <input type="text" style="font-family:Verdana; font-size: 18px;" placeholder="Re-enter Password"><br><br>
-            <p id='submit'><button id='updateSubmit'>Submit</button></p>
+            <input type="submit" id="registerButton" value="Sign Up">
         </form>
+    </div>
     </div>
 </body>
 </htmL>
