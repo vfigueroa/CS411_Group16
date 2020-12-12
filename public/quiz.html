@@ -3,6 +3,7 @@
 <head>
 <link rel="stylesheet" href="quiz.css">
 </head>
+<title>Search Restaurants</title>
 <header>
     <div class="container">
       <h1 class="logo"></h1>
@@ -29,15 +30,14 @@
 
 </div><!-- close header div -->
 </div><!-- close main div -->
-</body>
-
-<form id="form1">
+<form id="showResultsForm" hidden="true"></form>
+<form id="form1" method="POST">
 
 <h2>What is your go-to for takeout?</h2>
-<label for="take_italian"><input type="radio" name="takeout"  id="take_italian" />Italian (pasta?)</label>
-<label for="take_chinese"><input type="radio" name="takeout"  id="take_chinese" />Chinese (noodle-esque?)</label>
-<label for="take_mexican"><input type="radio" name="takeout"  id="take_mexican" />Mexican (Chipotle-esque?)</label>
-<label for="take_american"><input type="radio" name="takeout"  id="take_american"/>American (burger?)</label>
+<label for="take_italian"><input type="radio" name="takeout"  id="italian" />Italian (pasta?)</label>
+<label for="take_chinese"><input type="radio" name="takeout"  id="chinese" />Chinese (noodle-esque?)</label>
+<label for="take_mexican"><input type="radio" name="takeout"  id="mexican" />Mexican (Chipotle-esque?)</label>
+<label for="take_american"><input type="radio" name="takeout"  id="american"/>American (burger?)</label>
 
 <h2>Pick a beverage!</h2>
 <label for="red_wine"><input type="radio" name="bev" id="red_wine"/>Red wine</label>
@@ -46,41 +46,13 @@
 <label for="tequila"><input type="radio" name="bev" id="tequila" />Tequila</label>
 <label for="none"><input type="radio" name="bev" id="none" />I don't drink</label>
 
-
-<h2>How far are you willing to travel for a good meal?</h2>
-<label for="two"><input type="radio" name="travel" id="two" />Up to 2 miles</label>
-<label for="five"><input type="radio" name="travel" id="five" />Up to 5 miles</label>
-<label for="ten"><input type="radio" name="travel" id="ten" />Up to 10 miles</label>
-<label for="twenty"><input type="radio" name="travel"  id="twenty" />Up to 20 miles</label>
-<label for="fly"><input type="radio" name="travel"  id="fly" />I'll fly!</label>
-
-<h2>How much are you willing to pay for a good meal?</h2>
-<label for="pay_ten"><input type="radio" name="pay" id="pay_ten" /><$10/person</label>
-<label for="pay_twentyfive"><input type="radio" name="pay" id="pay_twentyfive" /><$25/person</label>
-<label for="pay_fifty"><input type="radio" name="pay" id="pay_fifty" /><$50 /person</label>
-<label for="pay_hunna"><input type="radio" name="pay"  id="pay_hunna" /><$100/person</label>
-<label for="pay_inf"><input type="radio" name="pay"  id="pay_inf" />No budget!</label>
-
-<h2>What guilty pleasure looks the most appealing?</h2>
-<label for="burger"><input type="radio" name="guilty" id="burger" />Burger</label>
-<label for="pizza"><input type="radio" name="guilty" id="pizza" />Pizza</label>
-<label for="steak"><input type="radio" name="guilty" id="steak" />Steak</label>
-<label for="cake"><input type="radio" name="guilty"  id="cake" />Cheesecake</label>
-<label for="icecream"><input type="radio" name="guilty"  id="icecream" />Ice cream</label>
-
 <h2>What place have you always wanted to visit?</h2>
-<label for="paris"><input type="radio" name="visit" id="paris" />Paris</label>
-<label for="dubai"><input type="radio" name="visit" id="dubai" />Dubai</label>
-<label for="rio"><input type="radio" name="visit" id="rio" />Rio</label>
-<label for="tokyo"><input type="radio" name="visit"  id="tokyo" />Tokyo</label>
-<label for="johan"><input type="radio" name="visit"  id="johan" />Johannesburg</label>
+<label for="paris"><input type="radio" name="visit" id="New York" />New York</label>
+<label for="dubai"><input type="radio" name="visit" id="San Francisco" />San Francisco</label>
+<label for="rio"><input type="radio" name="visit" id="Miami" />Miami</label>
+<label for="tokyo"><input type="radio" name="visit"  id="Boston" />Boston</label>
+<label for="johan"><input type="radio" name="visit"  id="Seattle" />Seattle</label>
 
-<h2>What was for breakfast?</h2>
-<label for="cereal"><input type="radio" name="breakfast" id="cereal" />cereal</label>
-<label for="drink"><input type="radio" name="breakfast" id="drink" />hot drink (tea/coffee)</label>
-<label for="getup"><input type="radio" name="breakfast" id="getup" />Some ornate getup</label>
-<label for="eggs"><input type="radio" name="breakfast"  id="eggs" />Eggs/bacon</label>
-<label for="what"><input type="radio" name="breakfast"  id="what" />What's breakfast?</label>
 
 <h2>What is your current mood?</h2>
 <label for="happy"><input type="radio" name="mood" id="happy" />Happy</label>
@@ -89,16 +61,98 @@
 <label for="content"><input type="radio" name="mood"  id="content" />Content</label>
 <label for="stress"><input type="radio" name="mood"  id="stress" />Stressed</label>
 
+<h2>What guilty pleasure looks the most appealing?</h2>
+<label for="burger"><input type="radio" name="guilty" id="burger" />Burger</label>
+<label for="pizza"><input type="radio" name="guilty" id="pizza" />Pizza</label>
+<label for="steak"><input type="radio" name="guilty" id="steak" />Steak</label>
+<label for="cake"><input type="radio" name="guilty"  id="cake" />Cheesecake</label>
+<label for="icecream"><input type="radio" name="guilty"  id="icecream" />Ice cream</label>
+
 <h2>Which do you prefer?</h2>
 <label for="salt"><input type="radio" name="taste" id="salt" />Salty</label>
 <label for="sweet"><input type="radio" name="taste" id="sweet" />Sweet</label>
 <label for="sour"><input type="radio" name="taste" id="sour" />Sour</label>
 <label for="spicy"><input type="radio" name="taste"  id="spicy" />Spicy</label>
 
-
-<h2><button type="submit" value="Submit">Submit</button></h2>
+<h2>What was for breakfast?</h2>
+<label for="cereal"><input type="radio" name="breakfast" id="cereal" />cereal</label>
+<label for="drink"><input type="radio" name="breakfast" id="drink" />hot drink (tea/coffee)</label>
+<label for="getup"><input type="radio" name="breakfast" id="getup" />Some ornate getup</label>
+<label for="eggs"><input type="radio" name="breakfast"  id="eggs" />Eggs/bacon</label>
+<label for="what"><input type="radio" name="breakfast"  id="what" />What's breakfast?</label>
 
 </form>
+<h2><button type="button" id = 'getResults' value="Submit">Submit</button></h2>
+
+
+</body>
+<script>
+
+  document.getElementById('getResults').onclick = function () {
+    let myTakeout = document.getElementsByName("takeout");
+    let myBev = document.getElementsByName("bev");
+    let myVisit = document.getElementsByName("visit");
+    let myMood = document.getElementsByName("mood");
+    let myGuilty = document.getElementsByName("guilty");
+    let myTaste = document.getElementsByName("taste");
+    let myBreakfast = document.getElementsByName("breakfast");
+    let myChoices = [myTakeout, myBev, myVisit, myMood, myGuilty, myTaste, myBreakfast];
+    let myChoicesFinal = [];
+    for (var i = 0; i <  myChoices.length; i++) {
+      for (var j = 0; j < myChoices[i].length ; j++) {
+        if (myChoices[i][j].checked) {
+          myChoicesFinal.push(myChoices[i][j].id)
+          break;
+        }
+      }
+    }
+    console.log(myChoicesFinal);
+    for (i = 0; i < myChoicesFinal.length ; i++) {
+      let choice = myChoicesFinal[i];
+      if (choice == "beer") myChoicesFinal[i] = "alcohol";
+      if (choice == "vodka")  myChoicesFinal[i] = "alcohol";
+      if (choice == "tequila") myChoicesFinal[i] = "alcohol";
+      if (choice == "red_wine") myChoicesFinal[i] = "alcohol";
+      if (choice == "none") myChoicesFinal[i] = "non-alcoholic";
+    }
+    if (myChoicesFinal.length == 7) {
+      let myQuery = myChoicesFinal.slice(0,3).join('%20');
+      console.log(myQuery);
+      makeQuery(myChoicesFinal[0], myChoicesFinal[1], myChoicesFinal[2]);
+    }else {
+      alert("Please answer every question!");
+    }
+    
+  }
+function makeQuery(query1, query2, query3) {
+  let myFetchReq = '/getRestaurantQuery' + query1 + '/' + query2 + '/' + query3;
+  console.log(myFetchReq);
+  fetch(myFetchReq)
+  .then(response => response.json())
+  .then(myText => {
+        document.getElementById("showResultsForm").hidden = false;
+        console.log(myText)
+        let myD = myText.data;
+        if (myText.length != 0 ) {
+        for (i = 0; i < 10 ; i++) {
+          const root = document.getElementById("showResultsForm");
+          const address = document.createElement('div');
+          const name = document.createElement('div');
+          
+          name.textContent = `Name: ${myD[i].restaurant_name}`;
+          address.textContent = `Address: ${myD[i].address.formatted}`;
+
+          root.append(address,name);
+          document.body.append(root);
+          //document.body.append(root);
+        } } else {
+          return;
+        }
+        
+      })
+}
+</script>
+
 
 <style>
 body {
@@ -131,3 +185,4 @@ text-align: center;
 
 </body>
 
+</html>

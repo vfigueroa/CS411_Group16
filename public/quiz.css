@@ -74,6 +74,32 @@ nav a:hover::before {
 }
 
 form {
+  margin-left: 50px;
   color: white;
+  margin-top: 100px
 }
-
+#showResultsForm {
+  float: right;
+  margin-right: 20%;
+  margin-left: 20%;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 50px;
+  margin-top: -600px;
+  padding-top: 20px;
+  background: rgb(146, 145, 145);
+  border-radius: 20px;
+  border-color: black;
+  border-style: solid;
+  right: 200px;
+  top: 100px
+}
+#getResults {
+  margin-left: 335px;
+  margin-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px
+  
+}

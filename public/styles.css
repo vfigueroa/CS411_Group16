@@ -7,10 +7,33 @@ body {
     font-weight: 800;
     text-align: center;
 }
-
+#clearCurrLocResults {
+  padding: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+#searchQuery {
+  padding: 5px;
+  margin-top: 20px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 20px;
+}
+#clearSearch {
+  padding: 5px;
+  margin-top: 20px;
+  margin-left: 0px;
+  margin-bottom: 20px;
+}
 #getCurrLoc {
   padding: 5px;
   margin-top: 20px;
+  margin-bottom: 20px;
+}
+#myQuery {
+  padding: 5px;
+  margin-top: 20px;
+  margin-right: 0px;
   margin-bottom: 20px;
 }
 #searchQueryForm {
