@@ -7,6 +7,15 @@ const cookieSession = require('cookie-session');
 require('./passport-setup.js');
 const config = require('./Config/config');
 
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://Group16:Group16@cs411project.0w7ra.mongodb.net/CS411Project?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
+
 const PORT = process.env.PORT || 3000
 
 const app = express();
