@@ -2,7 +2,11 @@ const express = require('express');
 const fetch = require('node-fetch');
 const path = require('path');
 const https = require('https');
-const { resolveSoa } = require('dns');
+const passport = require('passport');
+const cookieSession = require('cookie-session');
+require('./passport-setup.js');
+const config = require('./Config/config');
+
 const PORT = process.env.PORT || 3000
 
 const app = express();
@@ -10,7 +14,37 @@ app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(cookieSession({
+    name: '411Proj',
+    keys: ['key1', 'key2']
+}))
 
+const isLoggedIn = (req,res,next) => {
+    if(req.user) {
+        next();
+    } else {
+        res.sendStatus(401);
+    }
+}
+
+
+app.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/failed' }),
+    function(req, res) {
+      // Successful authentication, redirect home.
+      res.redirect('/good');
+    }
+  );
+app.get('/good', isLoggedIn, (req,res) => res.send(req.user.displayName));
+
+app.get('/logout', (req,res) => {
+    req.session = null;
+    req.logout();
+    res.redirect('/login')
+})
 app.get('/' , (req,res) => {
     res.sendFile(path.join(__dirname, 'public/landingPage.html'))
 })
@@ -58,10 +92,10 @@ app.get('/getRestaurantQuery:query1/:query2/:query3', (request, response) => {
     fetch(myApiUrl, {
         "method": "GET",
         "headers": {
-            "x-rapidapi-key": "79ebc88929msh08237d672f2e1b3p19ee6bjsn0a2f8d83cd78",
+            "x-rapidapi-key": config.rapidApiConfig.RAPID_API_KEY,
             "x-rapidapi-host": "documenu.p.rapidapi.com",
             "useQueryString": "true",
-            "x-api-key": "6e26df34a11f99b8bdd8de35eca6f88c"
+            "x-api-key": config.rapidApiConfig.API_KEY
         }
     }).then(res => res.json())
     .then(myText => {
