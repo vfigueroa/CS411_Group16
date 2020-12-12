@@ -38,14 +38,37 @@ app.get('/nearbyBathrooms:currentLat/:currentLon', async (request, response) => 
     response.send(test);
 })
 
-app.get('/specificQueryBathrooms/:myQuery', async (request, response) => {
+app.get('/specificQueryBathrooms:myQuery', async (request, response) => {
     var url = 'https://www.refugerestrooms.org/api/v1/restrooms/search?page=1&per_page=10&offset=0&ada=false&unisex=false&query=';
     var data = request.params;
     var myReq = url +   `${data.myQuery}`;
-
-    const myrequest = await fetch(myReq);
+    var myReqFin = myReq.replace(/ /g,"%20");
+    const myrequest = await fetch(myReqFin);
     const test = await myrequest.json();
     response.send(test);
+})
+
+app.get('/getRestaurantQuery:query1/:query2/:query3', (request, response) => {
+    let data = request.params;
+    let myParam1 = data.query1.replace(/ /g,"%20");
+    let myParam2 = data.query2.replace(/ /g,"%20");
+    let myParam3 = data.query3.replace(/ /g,"%20");
+    let myApiUrl = 'https://us-restaurant-menus.p.rapidapi.com/restaurants/search/fields?fields=' + myParam1 + '%20' + myParam2 + '%20' + myParam3;
+    console.log(myApiUrl);
+    fetch(myApiUrl, {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-key": "79ebc88929msh08237d672f2e1b3p19ee6bjsn0a2f8d83cd78",
+            "x-rapidapi-host": "documenu.p.rapidapi.com",
+            "useQueryString": "true",
+            "x-api-key": "6e26df34a11f99b8bdd8de35eca6f88c"
+        }
+    }).then(res => res.json())
+    .then(myText => {
+        //console.log(myText);
+        response.send(myText);
+    })
+    
 })
 
 
