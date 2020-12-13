@@ -12,6 +12,8 @@ const mongoose = require('mongoose');
 const uri = config.mongoConfig.MONGO_URI;
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
+let myCurrentUser = [false, ""];
+
 const PORT = process.env.PORT || 3000
 mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true})
     .then((result) => console.log('connected to db'))
@@ -39,6 +41,7 @@ const isLoggedIn = (req,res,next) => {
 }
 
 app.get('/add-user:userName/:password', (req,res) => {
+
     const user = User ({
         user_name: req.params.userName,
         password: req.params.password
@@ -62,6 +65,9 @@ app.get('/find-user:userName/:password', (req,res) => {
     .then(result => {
         if(result) {
         if (result.password == req.params.password) {
+            myCurrentUser[0] = true;
+            myCurrentUser[1] = req.params.userName;
+            console.log(myCurrentUser);
             res.json({message: "Success"})
         }else {
             res.json({message: "Incorrect login information"})
@@ -82,9 +88,18 @@ app.get('/find-user-by-username:userName', (req,res) => {
         }
     })
 })
+app.get('/isLoggedIn', (req,res) => {
+    if (myCurrentUser[0] = true) {
+        res.json({message: true, user: myCurrentUser[1]})
+    } else {
+        res.json({message: false, user: "dsd"})
+    }
+})
 
 app.get('/logout', (req,res) => {
-
+    myCurrentUser[0] = false;
+    myCurrentUser[1] = "";
+    res.json({message: "Successfully logged out"})
 })
 
 

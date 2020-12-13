@@ -8,7 +8,7 @@
     <nav>
       <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/login">Sign in</a></li>
+        <li ><a id="checkForLogin"  href="/login">Sign in</a></li>
         <li><a href="/searchBathrooms">Search Bathrooms</a></li>
         <li><a href="/quiz">Search Restaurants</a></li>
       </ul>
@@ -34,6 +34,8 @@
 </body>
 
 <script>
+  
+
   document.getElementById('loginButton').onclick = function () {
     let myUser = document.getElementById("user").value;
     let myPass = document.getElementById('pass').value;
