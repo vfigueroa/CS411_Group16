@@ -4,19 +4,19 @@ const path = require('path');
 const https = require('https');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
-require('./passport-setup.js');
+require('./passport-setup');
 const config = require('./Config/config');
-
+const User = require('./models/users');
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://Group16:Group16@cs411project.0w7ra.mongodb.net/CS411Project?retryWrites=true&w=majority";
+const mongoose = require('mongoose');
+const uri = config.mongoConfig.MONGO_URI;
 const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
 
 const PORT = process.env.PORT || 3000
+mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true})
+    .then((result) => console.log('connected to db'))
+    .catch((err) => console.log(err))
+
 
 const app = express();
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
@@ -38,15 +38,62 @@ const isLoggedIn = (req,res,next) => {
     }
 }
 
+app.get('/add-user:userName/:password', (req,res) => {
+    const user = User ({
+        user_name: req.params.userName,
+        password: req.params.password
+    })
+    User.findOne({"user_name": req.params.userName})
+    .then(result => {
+        if(result) {
+            res.json({message: "Already registered"})
+            //res.send("Already registered");
+          } else {
+            user.save()
+            .then(result => {
+                res.send(result)
+            })
+          }
+    })
+})
+
+app.get('/find-user:userName/:password', (req,res) => {
+    User.findOne({"user_name": req.params.userName}) 
+    .then(result => {
+        if(result) {
+        if (result.password == req.params.password) {
+            res.json({message: "Success"})
+        }else {
+            res.json({message: "Incorrect login information"})
+        } }
+        else {
+            res.json({message: "Incorrect login information"})
+        }
+    })
+})
+
+app.get('/find-user-by-username:userName', (req,res) => {
+    User.findOne({"user_name": req.params.userName}) 
+    .then(result => {
+        if (result) {
+            res.json({message: "Already exists"})
+        } else {
+            res.json({message: "Success"})
+        }
+    })
+})
+
+app.get('/logout', (req,res) => {
+
+})
+
+
 app.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
-app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/failed' }),
-    function(req, res) {
-      // Successful authentication, redirect home.
-      res.redirect('/good');
-    }
-  );
-app.get('/good', isLoggedIn, (req,res) => res.send(req.user.displayName));
+app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), (req, res) => {
+    res.redirect('/');
+})
+app.get('/good', isLoggedIn, (req, res) => res.send(`Welcome mr ${req.user.displayName}!`))
 
 app.get('/logout', (req,res) => {
     req.session = null;

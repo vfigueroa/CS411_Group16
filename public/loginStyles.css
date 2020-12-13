@@ -95,9 +95,10 @@ nav a:hover::before {
   font-size: 16px;
 }
 
-#twitterLogin{
-  background-image: url(twitter_sign_in_button.png);
-  padding: 14px 79px;
-  border: none;
+#googleButton{
+  background-image: url("google_sign_in_button.png");
+}
+#pass {
+  -webkit-text-security: circle;     
 }
 
