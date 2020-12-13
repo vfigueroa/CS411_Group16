@@ -42,7 +42,7 @@ document.getElementById('registerButton').onclick = function () {
       if (myPass != myCheckPass) {
         alert("Please make sure your passwords match!")
       } else {
-        fetch(`/add-user:${myUser}/${myPass}`)
+        fetch(`/add-user${myUser}/${myPass}`)
         .then(res => res.json())
         .then(text => {
           if(text.message == "Already registered") {
