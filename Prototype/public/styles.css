@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic);
+body {
+	margin: 0;
+	background: #222;
+	font-family: 'Work Sans', sans-serif;
+    font-weight: 800;
+    text-align: center;
+}
+#clearCurrLocResults {
+  padding: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+#searchQuery {
+  padding: 5px;
+  margin-top: 20px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 20px;
+}
+#clearSearch {
+  padding: 5px;
+  margin-top: 20px;
+  margin-left: 0px;
+  margin-bottom: 20px;
+}
+#getCurrLoc {
+  padding: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+#myQuery {
+  padding: 5px;
+  margin-top: 20px;
+  margin-right: 0px;
+  margin-bottom: 20px;
+}
+#searchQueryForm {
+  background-color: beige;
+  display: inline;
+  padding: 20px;
+  width: 1000px;
+  height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20;
+  padding: 15px 32px;
+}
+#currLocationForm {
+  background-color: beige;
+  display: inline;
+  padding: 20px;
+  width: 1000px;
+  height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20;
+}
+#myButton {
+  background-color: #dfbe07c5; /* Green */
+  border: none;
+  color: rgb(3, 3, 3);
+  font-weight: bold;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.container {
+	width: 80%;
+	margin: 0 auto;
+}
+
+header {
+  background: #b8b9b9;
+  box-shadow: 0 0 10px rgb(37, 37, 37);
+}
+
+header::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.logo {
+  float: left;
+  padding: 10px 0;
+}
+
+nav {
+  float: right;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  display: inline-block;
+  margin-left: 70px;
+  padding-top: 23px;
+
+  position: relative;
+}
+
+nav a {
+  color: #444;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: #000;
+}
+
+nav a::before {
+  content: '';
+  display: block;
+  height: 5px;
+  background-color: #444;
+
+  position: absolute;
+  top: 0;
+  width: 0%;
+
+  transition: all ease-in-out 250ms;
+}
+
+nav a:hover::before {
+  width: 100%;
+}
+
+#myTitle {
+    font-family: 'Roboto';
+	text-transform: uppercase;
+	font-weight: 900;
+	color: #fff;
+	font-size: 35px;
+}

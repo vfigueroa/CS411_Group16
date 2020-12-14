@@ -1,0 +1,65 @@
+<html>
+<title>Login</title>
+<link rel="stylesheet" href="loginStyles.css">
+<link rel = "icon" href = "./icon.png">
+<header>
+  <div class="container">
+    <h1 class="logo"></h1>
+
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li ><a id="checkForLogin"  href="/login">Sign in</a></li>
+        <li><a href="/searchBathrooms">Search Bathrooms</a></li>
+        <li><a href="/quiz">Search Restaurants</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<body>
+    <div class="login-page">
+    <div class="form"></div>
+        <form>
+            <p style="font-family:Verdana; font-size: 18px;">Login</p>
+            <input type="text" style="font-family:Verdana; font-size: 18px;" id = 'user' placeholder="Username"><br><br>
+            <input type="text" style="font-family:Verdana; font-size: 18px;" id = 'pass' placeholder="Password"><br><br>
+            <input type="button" id="loginButton" value="Login">
+            <p class="message">Not Signed Up Yet? <a href="register.html">Sign Up</a></p>
+            <a href="/google">
+              <img border="0" alt="Sign in" src="google_sign_in_button.png">
+        </form>
+        
+    </div>
+    </div>
+</body>
+
+<script>
+  window.onload = (event) => {
+    console.log("yes")
+  };
+  
+
+  document.getElementById('loginButton').onclick = function () {
+    let myUser = document.getElementById("user").value;
+    let myPass = document.getElementById('pass').value;
+    console.log(myUser, myPass);
+    if (myUser == "" || myPass == "") {
+      alert("Please fill out username and password!")
+    } else {
+    fetch(`/find-user${myUser}/${myPass}`)
+    .then(res => res.json())
+    .then(text => {
+      if(text.message == "Success") {
+        alert("Logged in!")
+        window.location.replace('/');
+      }else {
+        alert("Invalid info")
+      }
+    } ) }
+    
+  }
+</script>
+</htmL>
+
+

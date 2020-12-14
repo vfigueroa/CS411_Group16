@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "icon" href = "./icon.png">
+    <link rel="stylesheet" type="text/css" href="landingPage.css">
+  </head>
+  <title>In or Out</title>
+  <header>
+    <div class="container">
+      <h1 class="logo"></h1>
+
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li id="checkForLogin"><a href="/login">Sign in</a></li>
+          <li><a href="/searchBathrooms">Search Bathrooms</a></li>
+          <li><a href="/quiz">Search Restaurants</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <body>
+      <ul id="parent">
+        <li><h2>IN</h2></li> 
+        <li><h3>OR</h3></li> 
+        <li><h4>OUT</h4></li>
+      </ul>
+
+      <div class="wrapper">  
+        <u>
+          <ul>
+            <li><a href="/quiz">Search Restaurants</a></li>
+            <li><a href="/searchBathrooms">Search Bathrooms</a></li>
+          </ul>
+        </u>
+      </div>
+  
+  </body>
+<script>
+  window.onload = (event) => {
+    fetch('/isLoggedIn')
+    .then(res => res.json())
+    .then(text => {
+      console.log(text);
+      if(text.message == false) {
+        return;
+      }else {
+        console.log(text.myUser);
+        document.getElementById("checkForLogin").innerHTML = `<a href='/logoutlanding'>Logged in as: ${text.myUser}</a>`
+        
+      }
+    })
+  };
+</script>
+</html>
