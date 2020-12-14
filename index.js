@@ -12,7 +12,10 @@ const mongoose = require('mongoose');
 const uri = config.mongoConfig.MONGO_URI;
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
-let myCurrentUser = [false, ""];
+let myCurrentUser = {
+    loggedIn: false,
+    myUser: ""
+}
 
 const PORT = process.env.PORT || 3000
 mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true})
@@ -65,9 +68,8 @@ app.get('/find-user:userName/:password', (req,res) => {
     .then(result => {
         if(result) {
         if (result.password == req.params.password) {
-            myCurrentUser[0] = true;
-            myCurrentUser[1] = req.params.userName;
-            console.log(myCurrentUser);
+            myCurrentUser.loggedIn = true;
+            myCurrentUser.myUser = req.params.userName;
             res.json({message: "Success"})
         }else {
             res.json({message: "Incorrect login information"})
@@ -89,32 +91,34 @@ app.get('/find-user-by-username:userName', (req,res) => {
     })
 })
 app.get('/isLoggedIn', (req,res) => {
-    if (myCurrentUser[0] = true) {
-        res.json({message: true, user: myCurrentUser[1]})
+    if (myCurrentUser.loggedIn == true) {
+        res.json({message: true, myUser: myCurrentUser.myUser})
     } else {
-        res.json({message: false, user: "dsd"})
+        res.json({message: false, myUser: ""})
     }
 })
 
-app.get('/logout', (req,res) => {
-    myCurrentUser[0] = false;
-    myCurrentUser[1] = "";
-    res.json({message: "Successfully logged out"})
+app.get('/logout:myRedirect', (req,res) => {
+    myCurrentUser.loggedIn = false;
+    myCurrentUser.myUser = "";
+    console.log(req.params)
+    if(req.params.myRedirect == "landing") {
+        res.redirect('/')
+    }else {
+        res.redirect(req.params.myRedirect)
+    }
 })
 
 
 app.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), (req, res) => {
+    myCurrentUser.loggedIn = true;
+    myCurrentUser.myUser = req.user._json.given_name;
     res.redirect('/');
 })
 app.get('/good', isLoggedIn, (req, res) => res.send(`Welcome mr ${req.user.displayName}!`))
 
-app.get('/logout', (req,res) => {
-    req.session = null;
-    req.logout();
-    res.redirect('/login')
-})
 app.get('/' , (req,res) => {
     res.sendFile(path.join(__dirname, 'public/landingPage.html'))
 })
@@ -174,6 +178,7 @@ app.get('/getRestaurantQuery:query1/:query2/:query3', (request, response) => {
     })
     
 })
+module.exports = {myCurrentUser}
 
 
 

@@ -3,6 +3,7 @@
 <head>
 <link rel="stylesheet" href="quiz.css">
 </head>
+<link rel = "icon" href = "./icon.png">
 <title>Search Restaurants</title>
 <header>
     <div class="container">
@@ -11,7 +12,7 @@
       <nav>
         <ul>
           <li><a href="/">Home</a></li>
-          <li><a href="/login">Sign in</a></li>
+          <li id="checkForLogin"><a href="/login">Sign in</a></li>
           <li><a href="/searchBathrooms">Search Bathrooms</a></li>
           <li><a href="/quiz">Search Restaurants</a></li>
         </ul>
@@ -87,6 +88,19 @@
 
 </body>
 <script>
+  window.onload = (event) => {
+    fetch('/isLoggedIn')
+    .then(res => res.json())
+    .then(text => {
+      console.log(text);
+      if(text.message == false) {
+        return;
+      }else {
+        console.log(text.myUser);
+        document.getElementById("checkForLogin").innerHTML = `<a href='/logoutquiz'>Logged in as: ${text.myUser}</a>`
+      }
+    })
+  };
 
   document.getElementById('getResults').onclick = function () {
     let myTakeout = document.getElementsByName("takeout");

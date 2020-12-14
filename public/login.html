@@ -1,6 +1,7 @@
 <html>
 <title>Login</title>
 <link rel="stylesheet" href="loginStyles.css">
+<link rel = "icon" href = "./icon.png">
 <header>
   <div class="container">
     <h1 class="logo"></h1>
@@ -34,6 +35,9 @@
 </body>
 
 <script>
+  window.onload = (event) => {
+    console.log("yes")
+  };
   
 
   document.getElementById('loginButton').onclick = function () {
@@ -47,10 +51,9 @@
     .then(res => res.json())
     .then(text => {
       if(text.message == "Success") {
-        console.log(text)
         alert("Logged in!")
+        window.location.replace('/');
       }else {
-        console.log(text)
         alert("Invalid info")
       }
     } ) }

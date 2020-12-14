@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 const express = require('express');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const config = require('./Config/config');
-
+const main = require('./index');
 passport.serializeUser((user, done) => {
   done(null, user.id);
 })
@@ -19,8 +19,9 @@ passport.use(new GoogleStrategy({
 },
 function(accessToken, refreshToken, profile, cb) {
   // Register user here.
-    cb(null, profile);
-
+  
+  cb(null, profile);
+    
   //console.log(accessToken, profile._json.given_name);
   
 }
