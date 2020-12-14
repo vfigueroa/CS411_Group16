@@ -83,8 +83,10 @@
 <label for="what"><input type="radio" name="breakfast"  id="what" />What's breakfast?</label>
 
 </form>
-<h2><button type="button" id = 'getResults' value="Submit">Submit</button></h2>
-
+<ul id="myButtons">
+  <li><h2><button type="button" id = 'getResults' value="Submit">Submit</button></h2></li>
+  <li><h2><button type="button" id = 'clearResults' value="clear">Clear Results</button></h2></li>
+</ul>
 
 </body>
 <script>
@@ -101,7 +103,15 @@
       }
     })
   };
+<<<<<<< HEAD
+  document.getElementById('clearResults').onclick = function () {
+    document.getElementById('showResultsForm').innerHTML = "";
+    document.getElementById('showResultsForm').hidden = true;
+    
+  }
+=======
 
+>>>>>>> 63422ead67502d4166a372ca6f7fdd43762704bb
   document.getElementById('getResults').onclick = function () {
     let myTakeout = document.getElementsByName("takeout");
     let myBev = document.getElementsByName("bev");

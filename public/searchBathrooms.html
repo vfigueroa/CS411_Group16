@@ -1,6 +1,10 @@
 <html>	
   <link rel="stylesheet" href="styles.css">
   <link rel = "icon" href = "./icon.png">
+<<<<<<< HEAD
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+=======
+>>>>>>> 63422ead67502d4166a372ca6f7fdd43762704bb
   <title>Search Bathrooms</title>
   <header>
     <div class="container">
@@ -9,7 +13,11 @@
       <nav>
         <ul>
           <li><a href="/">Home</a></li>
+<<<<<<< HEAD
+          <li ><a href='/login' id="checkForLogin">Sign in</a></li>
+=======
           <li id="checkForLogin"><a href="/login">Sign in</a></li>
+>>>>>>> 63422ead67502d4166a372ca6f7fdd43762704bb
           <li><a href="/searchBathrooms">Search Bathrooms</a></li>
           <li><a href="/quiz">Search Restaurants</a></li>
         </ul>
@@ -27,33 +35,44 @@
   <input type ="submit" id = "myButton" onclick = "asd(2)" value="Search for something specific" >
 
   <form id="currLocationForm" action="">
-    <input type="button" id ="getCurrLoc" value="Find nearby bathrooms">
-    <input type="button" id ="clearCurrLocResults" value="Clear results">
+    <input type="button" id ="getCurrLoc" onclick = "myLocation()" value="Find nearby bathrooms">
+    <input type="button" id ="clearCurrLocResults" onclick = "myClearResults()" value="Clear results">
   </form>
   <form id="searchQueryForm" action="">
     <input type="text" id="myQuery" placeholder="Ex: near vancouver">
-    <input type ="button" id ="searchQuery" value = "Search">
-    <input type ="button" id ="clearSearch" value = "Clear results">
+    <input type ="button" id ="searchQuery" onclick = "searchMyQuery()" value = "Search">
+    <input type ="button" id ="clearSearch" onclick = "myClearResults2()" value = "Clear results">
   </form>
   </body>
 
 <script>
+  let theUser = "";
   window.onload = function() {
-
     document.getElementById("currLocationForm").style.display = "none";
     document.getElementById("searchQueryForm").style.display = "none";
     fetch('/isLoggedIn')
     .then(res => res.json())
     .then(text => {
+<<<<<<< HEAD
+      if(text.message == false) {
+        return;
+      }else {
+        theUser = text.myUser;
+=======
       console.log(text);
       if(text.message == false) {
         return;
       }else {
         console.log(text.myUser);
+>>>>>>> 63422ead67502d4166a372ca6f7fdd43762704bb
         document.getElementById("checkForLogin").innerHTML = `<a href='/logoutsearchBathrooms'>Logged in as: ${text.myUser}</a>`
       }
     })
   };
+
+  function myClearResults() {
+    document.getElementById('currLocationForm').innerHTML = "<form id=\"currLocationForm\" action style=\"display: block;\"\> <input type=\"button\" id=\"getCurrLoc\" onclick = \"myLocation()\" value=\"Find nearby bathrooms\"> <input type=\"button\" id=\"clearCurrLocResults\" onclick = \"myClearResults()\"value=\"Clear results\">" ;
+  }
 
   function asd(a) {
     let x = document.getElementById("currLocationForm").style;
@@ -78,7 +97,8 @@
     }
   };
 
-  document.getElementById('getCurrLoc').onclick = function () {
+  function myLocation() {
+    console.log("dsdsad")
     getCurrentLocation(position => {
       var currentLat = position.coords.latitude;
       var currentLon = position.coords.longitude;
@@ -104,7 +124,7 @@
       })
     });
   };
-  document.getElementById('searchQuery').onclick = function () {
+  function searchMyQuery() {
     let myQuery = document.getElementById('myQuery').value;
     console.log(myQuery);
     if (myQuery != "") {
@@ -129,29 +149,8 @@
       }) }
   
     } 
-    document.getElementById('clearSearch').onclick = function () {   
-      let myNode = document.getElementById('searchQueryForm');
-      console.log(myNode.children.length);
-      if (myNode.children.length > 3 ) {
-        while (myNode.firstChild) {
-          myNode.removeChild(myNode.lastChild);
-        }
-        let z = document.createElement("input");
-        z.setAttribute("id", "myQuery");
-        z.setAttribute("placeholder", "Ex: near vancouver");
-        z.type = "text";
-        myNode.appendChild(z);
-        let x = document.createElement("BUTTON");
-        x.setAttribute("id", "searchQuery");
-        let t = document.createTextNode("Search")
-        x.appendChild(t)
-        myNode.appendChild(x)
-        let y = document.createElement("BUTTON");
-        y.setAttribute("id", "clearSearch");
-        let yt = document.createTextNode("Clear results");
-        y.appendChild(yt)
-        myNode.appendChild(y)
-      } 
+    function myClearResults2() {
+      document.getElementById("searchQueryForm").innerHTML = "<form id =\searchQueryForm\" action> <input type=\"text\" id=\"myQuery\" placeholder=\"Ex: near vancouver\"> <input type=\"button\" id=\"searchQuery\" onclick=\"searchMyQuery()\" value=\"Search\"> <input type=\"button\" id=\"clearSearch\" onclick=\"myClearResults2()\" value=\"Clear results\">";
     }
       /*var url = 'https://www.refugerestrooms.org/api/v1/restrooms/by_location?page=1&per_page=10&offset=0&';
       var myReq = url + '&lat=' +  `${currentLat}` + '&' + '&lng=' +  `${currentLon}`;
