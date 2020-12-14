@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic);
+body {
+	margin: 0;
+	background: #222;
+	font-family: 'Work Sans', sans-serif;
+    font-weight: 800;
+    text-align: center;
+}
+u {
+    float: middle;
+  }
+  
+  u ul {
+    position: fixed;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  u li {
+    display: inline-block;
+    margin-left: 23px;
+    margin-right: 23px;
+    padding-top: 23px;
+  
+    position: relative;
+  }
+  
+  u a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 100%;
+  }
+  
+  u a:hover {
+    color: #000;
+  }
+  
+  u a::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background-color: rgb(255, 255, 255);
+
+    position: absolute;
+    top: 0;
+    width: 0%;
+  
+    transition: all ease-in-out 250ms;
+  }
+  
+  u a:hover::before {
+    width: 100%;
+  }
+
+h2{
+    font-size: 400%;
+    color: rgb(0, 255, 64);
+}
+
+h3{
+    font-size: 400%;
+    color: rgb(255, 255, 255);
+}
+
+h4{
+    font-size: 400%;
+    color: rgb(95, 62, 1);
+}
+
+#parent {
+    list-style: none;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    position: fixed;
+    top: 20%;
+    left: 48.8%;
+    transform: translate(-50%, -50%);
+}
+
+#parent > li {
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 900px;
+  height: 350px;
+  margin: 0;
+  padding: 10px;
+  border: 5px solid rgb(255, 255, 255); 
+}
+.container {
+	width: 80%;
+	margin: 0 auto;
+}
+
+header {
+  background: #b8b9b9;
+}
+
+header::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.logo {
+  float: left;
+  padding: 10px 0;
+}
+
+nav {
+  float: right;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  display: inline-block;
+  margin-left: 70px;
+  padding-top: 23px;
+
+  position: relative;
+}
+
+nav a {
+  color: #444;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: #000;
+}
+
+nav a::before {
+  content: '';
+  display: block;
+  height: 5px;
+  background-color: #444;
+
+  position: absolute;
+  top: 0;
+  width: 0%;
+
+  transition: all ease-in-out 250ms;
+}
+
+nav a:hover::before {
+  width: 100%;
+}

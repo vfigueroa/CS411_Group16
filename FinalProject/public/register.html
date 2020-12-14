@@ -1,0 +1,63 @@
+<html>
+<title>Register</title>
+<link rel="stylesheet" href="registerStyles.css">
+<link rel = "icon" href = "./icon.png">
+<header>
+    <div class="container">
+      <h1 class="logo"></h1>
+
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a id = "checkForLogin" href="/login">Sign in</a></li>
+          <li><a href="/searchBathrooms">Search Bathrooms</a></li>
+          <li><a href="/quiz">Search Restaurants</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<body>
+    <div class="login-page">
+    <div class="form"></div>
+        <form>
+            <p style="font-family:Verdana; font-size: 18px;">Sign Up</p>
+            <input type="text" style="font-family:Verdana; font-size: 18px;" id = 'user' placeholder="Username"><br><br>
+            <input type="text" style="font-family:Verdana; font-size: 18px;" id = 'pass' placeholder="Password"><br><br>
+            <input type="text" style="font-family:Verdana; font-size: 18px;" id ='checkPass' placeholder="Re-enter Password"><br><br>
+            <input type="button" id="registerButton" value="Sign Up">
+            <button onclick="location.href='/login'" type="button" id="backToLogin">
+              Back to login</button>
+        </form>
+    </div>
+    </div>
+</body>
+<script>
+document.getElementById('registerButton').onclick = function () {
+  let myUser = document.getElementById("user").value;
+  let myPass = document.getElementById('pass').value;
+  let myCheckPass = document.getElementById('checkPass').value;
+  if (myUser == "" || myPass == "" || myCheckPass == "") {
+      alert("Please fill out all fields!")
+    } else {
+      if (myPass != myCheckPass) {
+        alert("Please make sure your passwords match!")
+      } else {
+        fetch(`/add-user${myUser}/${myPass}`)
+        .then(res => res.json())
+        .then(text => {
+          if(text.message == "Already registered") {
+            alert("Account already exists with this username!")
+          }else {
+            document.getElementById("user").value = "";
+            document.getElementById("pass").value = "";
+            document.getElementById("checkPass").value = "";
+            alert("Successfully registered!")
+          }
+        })
+     
+      }
+    }
+}
+</script>
+</htmL>
