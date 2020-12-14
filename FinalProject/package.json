@@ -1,0 +1,34 @@
+{
+  "name": "teamproject",
+  "version": "1.0.0",
+  "description": "Bathroom finder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "bathroom",
+    "find",
+    "location"
+  ],
+  "author": "Matthew G, et al",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-session": "^1.4.0",
+    "express": "^4.17.1",
+    "fetch": "^1.1.0",
+    "https": "^1.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.3",
+    "mongoose": "^5.11.7",
+    "node-fetch": "^2.6.1",
+    "nodemon": "^2.0.6",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0",
+    "path": "^0.12.7",
+    "request": "^2.88.2"
+  }
+}
