@@ -1,8 +1,6 @@
-# CS411 Group16
-Victor Figueroa, Michella Kaplun, Matt Gagnon, Jenny Kim, Esben Søvndahl, and Mina Horner
-
 # In 'n Out
 ## Where user's can search for restaurants and public restrooms
+Developed by BU's CS411 Fall Group16: Victor Figueroa, Michella Kaplun, Matt Gagnon, Jenny Kim, Esben Søvndahl, and Mina Horner
 
 # About Our App
 Our app uses Google OAuth to allow users to sign in with their Google account, or create a unique login just for our app.
