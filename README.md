@@ -1,8 +1,12 @@
-# CS411_Group16
-Group 16 for CS411 Fall 2020
+# CS411 Group16
+Victor Figueroa, Michella Kaplun, Matt Gagnon, Jenny Kim, Esben Søvndahl, and Mina Horner
 
-# Project TBD
+# In 'n Out
+## Where user's can search for restaurants and public restrooms
 
+# About Our App
+Our app uses Google OAuth to allow users to sign in with their Google account, or create a unique login just for our app.
+Once a user logs in they will be directed the the landing page where they can choose between taking a quiz, searching for bathrooms using https://www.refugerestrooms.org/api/docs/ or searching for restaurants using https://rapidapi.com/restaurantmenus/api/us-restaurant-menus. 
 
 Missing the node modules.
 Modules used: passport-google-oauth20, passport, express, node-fetch, path, https, dns, cookiesession. 
